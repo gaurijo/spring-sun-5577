@@ -2,4 +2,12 @@ class Hospital < ApplicationRecord
   has_many :doctors
   has_many :doctor_patients, through: :doctors
   has_many :patients, through: :doctor_patients 
+
+  def total_docs 
+    self.doctors.count
+  end
+
+  def unique_unis 
+    doctors.pluck(:university).uniq
+  end
 end
